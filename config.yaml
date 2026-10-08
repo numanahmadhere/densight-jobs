@@ -79,6 +79,13 @@ feed_window_days: 3             # career pages / remote boards: only jobs posted
 pause_seconds: 6                # wait between searches to reduce blocking
 fetch_description: true         # needed for skills; slower
 
+# Analysis PDF is emailed after every run that finds new jobs.
+# Leave blank to send it to the Google account that owns the Apps Script, or put an address here.
+report_email: ""
+# First day of normal daily collection. Week-on-week comparisons in the PDF only use data from
+# this date on, because backfilled weeks undercount jobs that had already closed.
+tracking_start: "2026-10-08"
+
 # Public sheet banner (row 1 of every weekly tab)
 signup_url: "https://forms.gle/REPLACE_WITH_YOUR_FORM"
 brand: "Densight Labs"

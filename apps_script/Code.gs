@@ -1,5 +1,5 @@
 /**
- * AI Jobs PK: Sheets writer (v2)
+ * AI Jobs PK: Sheets writer + report emailer (v3)
  * Replace your current Apps Script code with this, then:
  * Deploy > Manage deployments > pencil icon > Version: New version > Deploy.
  * The web app URL stays the same, so your GitHub secrets don't change.
@@ -14,6 +14,8 @@ function doPost(e) {
     const body = JSON.parse(e.postData.contents);
     const secret = PropertiesService.getScriptProperties().getProperty('SECRET');
     if (!secret || body.secret !== secret) return out({ ok: false, error: 'unauthorized' });
+
+    if (body.action === 'email') return sendReport(body);
 
     const ss = SpreadsheetApp.openById(body.target === 'public' ? PUBLIC_ID : MASTER_ID);
     let sh = ss.getSheetByName(body.tab) || ss.insertSheet(body.tab);
@@ -68,6 +70,19 @@ function formatSheet(sh, hasBanner, nCols) {
     sh.autoResizeColumn(c);
     if (sh.getColumnWidth(c) > 320) sh.setColumnWidth(c, 320);
   }
+}
+
+/** Emails the analysis PDF. Sends to body.to, or to the script owner if blank. */
+function sendReport(body) {
+  const to = body.to || Session.getEffectiveUser().getEmail();
+  const pdf = Utilities.newBlob(Utilities.base64Decode(body.pdf_b64), 'application/pdf', body.filename);
+  MailApp.sendEmail({ to: to, subject: body.subject, htmlBody: body.html, attachments: [pdf],
+                      name: 'Densight AI Jobs' });
+  const ss = SpreadsheetApp.openById(MASTER_ID);
+  const sh = ss.getSheetByName('email_log') || ss.insertSheet('email_log');
+  if (sh.getLastRow() === 0) sh.appendRow(['sent_at', 'to', 'subject', 'attachment']);
+  sh.appendRow([new Date(), to, body.subject, body.filename]);
+  return out({ ok: true, emailed: true, to: to });
 }
 
 function out(obj) {

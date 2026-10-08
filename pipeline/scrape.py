@@ -2,6 +2,7 @@
 
 Run:  python -m pipeline.scrape
 """
+import json
 import os
 import time
 from datetime import datetime, timedelta, timezone
@@ -174,6 +175,16 @@ def main():
     LAST_RUN.write_text(f"Run at {datetime.now(PKT):%Y-%m-%d %H:%M} PKT  "
                         f"({'backfill ' + str(backfill) + ' days' if backfill else 'daily'})\n"
                         + summary + "\n\n" + "\n".join(log) + "\n")
+    # machine-readable run info for the analysis PDF
+    (ROOT / "data" / "last_run.json").write_text(json.dumps({
+        "run_at": f"{datetime.now(PKT):%Y-%m-%d %H:%M}",
+        "date": today,
+        "mode": f"backfill {backfill} days" if backfill else "daily",
+        "raw": int(len(raw)), "ai_relevant": int(len(fresh)),
+        "new_ids": list(new["job_id"]) if len(new) else [],
+        "by_source": {k: int(v) for k, v in by_source.items()},
+        "failures": [l for l in log if "FAILED" in l or "skipped" in l],
+    }, indent=1))
 
     if backfill:
         # rewrite the whole tab so first_seen dates and the new column are consistent

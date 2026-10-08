@@ -39,6 +39,22 @@ jobs:
           LOOKBACK_DAYS: ${{ inputs.lookback_days }}
         run: python -m pipeline.scrape
 
+      - name: Build and email market analysis PDF (only when new jobs were found)
+        if: success()
+        continue-on-error: true        # a report problem must never break data collection
+        env:
+          APPS_SCRIPT_URL: ${{ secrets.APPS_SCRIPT_URL }}
+          APPS_SCRIPT_SECRET: ${{ secrets.APPS_SCRIPT_SECRET }}
+        run: python -m pipeline.analysis
+
+      - name: Keep the PDF on the run page (Artifacts)
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: market-analysis
+          path: out_report/*.pdf
+          if-no-files-found: ignore
+
       - name: Commit job history
         if: always()
         run: |

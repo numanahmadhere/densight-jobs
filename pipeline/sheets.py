@@ -85,3 +85,36 @@ def write(target, tab, headers, rows, mode="append", banner=None, first=False):
         })
         total += res.get("written", 0)
     return total
+
+
+def send_email(subject, html, pdf_path, to=""):
+    """Emails the PDF through the Apps Script. Never raises: a failed email must not fail the run.
+
+    Works safely with an older Apps Script too: the payload is also a valid one-row write to an
+    'email_log' tab, so an old script logs the attempt instead of erroring, and we report that the
+    script needs updating.
+    """
+    import base64
+    from datetime import datetime as _dt
+    pdf_path = Path(pdf_path)
+    payload = {
+        "action": "email",
+        "to": to or "",
+        "subject": subject,
+        "html": html,
+        "filename": pdf_path.name,
+        "pdf_b64": base64.b64encode(pdf_path.read_bytes()).decode(),
+        # fallback fields understood by the older script (harmless log row)
+        "target": "master", "tab": "email_log", "mode": "append",
+        "headers": ["sent_at_utc", "subject", "attachment"],
+        "rows": [[_dt.utcnow().strftime("%Y-%m-%d %H:%M"), subject, pdf_path.name]],
+    }
+    try:
+        res = _post(payload)
+    except Exception as e:
+        return f"FAILED: {str(e)[:200]}"
+    if res.get("dry_run"):
+        return "dry run (not sent)"
+    if res.get("emailed"):
+        return f"sent to {res.get('to', 'script owner')}"
+    return "NOT SENT: update the Apps Script to the latest Code.gs (see README) to enable emails"
