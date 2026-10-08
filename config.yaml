@@ -3,28 +3,79 @@
 # Edit this file to change what gets scraped and how jobs are classified.
 # ------------------------------------------------------------------
 
-# Searches run every day on each site below
-search_terms:
-  - "machine learning"
-  - "artificial intelligence"
-  - "data scientist"
-  - "AI engineer"
-  - "generative AI"
-  - "LLM"
-  - "computer vision"
-  - "NLP"
-  - "data engineer"
-  - "data analyst"
-
 sites:
   indeed:
-    results_per_term: 50
+    # Indeed understands OR, "exact phrases", (groups) and -excluded words,
+    # and searches the job description too. Fewer, smarter queries catch more.
+    results_per_query: 100
+    queries:
+      - '"machine learning" OR "deep learning" OR "artificial intelligence" OR "AI engineer" OR "ML engineer"'
+      - '"data scientist" OR "data science"'
+      - '"generative AI" OR LLM OR "large language model" OR RAG OR "prompt engineer" OR "AI agent"'
+      - '"computer vision" OR NLP OR "natural language processing"'
+      - '"data engineer" OR "data analyst" OR "business intelligence" OR "power bi" OR "analytics engineer"'
+      # Generic titles whose description mentions AI work (e.g. "Software Engineer" building LLM features)
+      - '(developer OR engineer) (LLM OR "machine learning" OR "generative AI" OR "deep learning" OR PyTorch) -sales -marketing -teacher'
+
   linkedin:
-    results_per_term: 25        # LinkedIn blocks fast; keep this small
+    results_per_query: 25       # LinkedIn blocks fast; keep this small
+    queries:
+      - "machine learning"
+      - "artificial intelligence"
+      - "data scientist"
+      - "AI engineer"
+      - "generative AI"
+      - "LLM"
+      - "computer vision"
+      - "NLP"
+      - "data engineer"
+      - "data analyst"
+    # Track every job at chosen employers. Each entry is a LinkedIn company ID (a number).
+    # To find one: open the company's LinkedIn page > Jobs > "See all jobs".
+    # The address bar then contains f_C=NUMBER. Add that number below, e.g.  - 1234567
+    company_ids: []
+    company_results: 100
+
+# Company career pages (official public job feeds, no scraping). Only jobs located in
+# Pakistan are kept. Add a company with one line:  board-name: "Display Name"
+# The board name is the part of the careers URL after the domain, e.g.
+#   job-boards.greenhouse.io/gomotive  -> gomotive
+#   jobs.lever.co/smart-working-solutions -> smart-working-solutions
+#   apply.workable.com/devsinc-17 -> devsinc-17
+career_pages:
+  greenhouse:
+    gomotive: "Motive"
+    careem: "Careem"
+    podium81: "Podium"
+    joblogic: "Joblogic"
+    nysonian: "Nysonian"
+    vectara: "Vectara"
+    interviewengineering: "Interview Engineering"
+    apiphani: "apiphani"
+  lever:
+    smart-working-solutions: "Smart Working"
+  workable:
+    devsinc-17: "Devsinc"
+    pakistan-mobile-communication-limited-pmcl: "Jazz"
+    9dtechnologies-1: "9D Technologies"
+    skylabs-ai: "Skylabs AI"
+    inbox-business-technologies: "Inbox Business Technologies"
+    volga-partners: "Volga Partners"
+
+# Remote job boards. These jobs are shown in a separate "Remote (global)" section and are
+# NOT counted in the Pakistan market numbers. Only jobs whose location matches open_to are kept.
+remote_boards:
+  remoteok: true
+  weworkremotely: true
+  open_to: 'worldwide|anywhere|global|asia|apac|pakistan'
+
+# Optional: if LinkedIn keeps blocking, add a GitHub secret named PROXIES
+# (comma-separated, e.g. user:pass@host:port,user:pass@host2:port). Used automatically.
 
 location: "Pakistan"
 country_indeed: "Pakistan"
 hours_old: 48                   # daily run looks back 2 days; dedupe removes overlap
+feed_window_days: 3             # career pages / remote boards: only jobs posted in the last 3 days count as new
 pause_seconds: 6                # wait between searches to reduce blocking
 fetch_description: true         # needed for skills; slower
 
@@ -50,6 +101,28 @@ categories:
     title: '\b(data engineer|big data|etl developer|analytics engineer|data platform|data architect)'
   - name: "Data Analytics / BI"
     title: '\b(data analyst|business intelligence|\bbi\b|bi developer|bi analyst|power bi|analytics (lead|manager|specialist)|insights analyst|reporting analyst)'
+
+# Generic engineering titles are kept as "AI-adjacent Engineering" when the description
+# mentions at least `min_hits` different AI terms below (catches "Software Engineer" on LLM work).
+ai_adjacent:
+  title: '\b(engineer|developer|programmer|architect|scientist|researcher)\b'
+  min_hits: 2
+  description_terms:
+    - '\bllms?\b'
+    - 'large language model'
+    - 'generative ai|gen ?ai'
+    - 'machine learning'
+    - 'deep learning'
+    - 'pytorch'
+    - 'tensorflow'
+    - '\brag\b|retrieval[- ]augmented'
+    - 'langchain|langgraph'
+    - 'computer vision'
+    - '\bnlp\b|natural language processing'
+    - 'hugging ?face'
+    - 'openai|anthropic|\bgpt-?\d'
+    - 'fine-?tun'
+    - 'vector (db|database)|embeddings'
 
 # Titles containing these are dropped even if they match above
 exclude_title: '\b(sales|teacher|tutor|lecturer|nurse|driver|accountant|receptionist|graphic designer|data entry|call center|telesales)\b'

@@ -55,7 +55,17 @@ def main():
     print(f"Building report for {wk} ({nice})")
 
     hist = pd.read_csv(DATA, dtype=str, keep_default_na=False)
+    for c in ("company_size", "company_revenue"):  # history saved before these fields existed
+        if c not in hist.columns:
+            hist[c] = ""
+    if "market" not in hist.columns:
+        hist["market"] = "Pakistan"
+    hist["market"] = hist["market"].replace("", "Pakistan")
     hist["first_seen_d"] = pd.to_datetime(hist["first_seen"]).dt.date
+    # Remote (global) jobs get their own section; all Pakistan stats use Pakistan jobs only
+    remote_hist = hist[hist["market"] == "Remote (global)"]
+    remote_week = remote_hist[(remote_hist["first_seen_d"] >= start) & (remote_hist["first_seen_d"] <= end)]
+    hist = hist[hist["market"] == "Pakistan"].copy()
     week = hist[(hist["first_seen_d"] >= start) & (hist["first_seen_d"] <= end)].copy()
     prev = hist[(hist["first_seen_d"] >= start - timedelta(days=7)) & (hist["first_seen_d"] < start)]
 
@@ -65,18 +75,25 @@ def main():
 
     n = len(week)
     n_companies = week["company_norm"].nunique()
-    NAMES = {"linkedin": "LinkedIn", "indeed": "Indeed", "glassdoor": "Glassdoor", "rozee": "Rozee.pk"}
+    NAMES = {"linkedin": "LinkedIn", "indeed": "Indeed", "glassdoor": "Glassdoor", "rozee": "Rozee.pk",
+             "greenhouse": "Company careers", "lever": "Company careers", "workable": "Company careers",
+             "remoteok": "RemoteOK", "weworkremotely": "We Work Remotely"}
     sources = ", ".join(sorted(NAMES.get(s, s.title()) for s in week["source"].unique() if s)) or "LinkedIn, Indeed"
     foot = f"Source: {CONFIG['brand']} analysis of {n} AI and data job postings in Pakistan ({sources}), {nice}"
 
     # ---------------- Public weekly tab ----------------
     order = {c["name"]: i for i, c in enumerate(CONFIG["categories"])}
-    pub = week.assign(_o=week["category"].map(order)).sort_values(["_o", "company", "title"])
+    order["AI-adjacent Engineering"] = len(order)
+    pub = pd.concat([
+        week.assign(_m=0, _o=week["category"].map(order)),
+        remote_week.assign(_m=1, _o=remote_week["category"].map(order)),
+    ]).sort_values(["_m", "_o", "company", "title"])
     pub_headers = ["Role", "Company", "City", "Category", "Level", "Skills mentioned", "Found on", "Posted", "Apply link"]
     pub = pub.assign(source=pub["source"].map(lambda s: NAMES.get(s, s.title())))
     pub_rows = pub[["title", "company", "city", "category", "seniority", "skills", "source",
                     "date_posted", "job_url"]].values.tolist()
-    banner = (f"{n} AI & data roles in Pakistan, {nice}  |  Compiled by {CONFIG['brand']}  |  "
+    banner = (f"{n} AI & data roles in Pakistan + {len(remote_week)} remote roles open to Pakistan, {nice}  |  "
+              f"Compiled by {CONFIG['brand']}  |  "
               f"Get this list every Monday: {CONFIG['signup_url']}")
     sheets.write("public", f"{wk} ({nice})", pub_headers, pub_rows, mode="replace", banner=banner, first=True)
 
@@ -95,13 +112,16 @@ def main():
         "first_seen": g["first_seen"].min(),
         "last_seen": g["last_seen"].max(),
         "industry": g["industry"].agg(lambda s: next((x for x in s if x), "")),
+        "company_size": g["company_size"].agg(lambda s: next((x for x in s if x), "")),
+        "company_revenue": g["company_revenue"].agg(lambda s: next((x for x in s if x), "")),
         "company_url": g["company_url"].agg(lambda s: next((x for x in s if x), "")),
     }).fillna({"roles_this_week": 0, "roles_last_4_weeks": 0})
     comp["lead_signal"] = pd.cut(comp["roles_last_4_weeks"], [-1, 0, 2, 4, 1e9],
                                  labels=["Cold", "Warm", "Hot", "Very hot"]).astype(str)
     comp = comp.sort_values(["roles_last_4_weeks", "roles_all_time"], ascending=False)
     comp_cols = ["company", "lead_signal", "roles_this_week", "roles_last_4_weeks", "roles_all_time",
-                 "categories", "cities", "latest_role", "industry", "company_url", "first_seen", "last_seen"]
+                 "categories", "cities", "latest_role", "industry", "company_size", "company_revenue",
+                 "company_url", "first_seen", "last_seen"]
     sheets.write("master", "companies", comp_cols, comp[comp_cols].values.tolist(), mode="replace")
 
     # ---------------- Charts ----------------
@@ -135,11 +155,11 @@ def main():
     # ---------------- Master: weekly stats ----------------
     change = pct_change(n, len(prev))
     stats_headers = ["week", "dates", "new_roles", "change_vs_prev_week_pct", "hiring_companies",
-                     "top_city", "top_category", "top_skill", "genai_llm_roles", "remote_roles", "entry_or_intern_roles"]
+                     "top_city", "top_category", "top_skill", "genai_llm_roles", "remote_roles", "remote_global_open_to_pk", "entry_or_intern_roles"]
     stats_row = [wk, nice, n, "" if change is None else change, n_companies,
                  cities.index[0] if len(cities) else "", cats.index[0] if len(cats) else "",
                  sk.index[0] if len(sk) else "", int((week["category"] == "GenAI / LLM").sum()),
-                 int((week["city"] == "Remote").sum()),
+                 int((week["city"] == "Remote").sum()), len(remote_week),
                  int(week["seniority"].isin(["Entry", "Internship"]).sum())]
     sheets.write("master", "weekly_stats", stats_headers, [stats_row])
 
@@ -156,13 +176,17 @@ def main():
         f"- Top city: **{cities.index[0] if len(cities) else 'n/a'}** ({cities.iloc[0] if len(cities) else 0} roles)",
         f"- Most-requested skill: **{sk.index[0] if len(sk) else 'n/a'}** ({int(sk_pct.iloc[0]) if len(sk) else 0}% of postings)",
         f"- GenAI / LLM roles: **{stats_row[8]}**",
-        f"- Remote roles: **{stats_row[9]}**  |  Entry-level or internships: **{stats_row[10]}**",
+        f"- Pakistan-based remote roles: **{stats_row[9]}**  |  Entry-level or internships: **{stats_row[11]}**",
+        f"- Remote roles open to Pakistan (global boards, not in the numbers above): **{stats_row[10]}**",
         "",
         "## Top hiring companies",
         *[f"- {c}: {k} roles" for c, k in top_co.head(5).items()],
         "",
         "## Top 10 picks for the email",
         *[f"{i}. **{r.title}**, {r.company} ({r.city})  \n   {r.job_url}" for i, r in enumerate(top10.itertuples(), 1)],
+        "",
+        "## Remote picks open to Pakistan",
+        *[f"- **{r.title}**, {r.company}  \n  {r.job_url}" for r in remote_week.drop_duplicates("company_norm").head(5).itertuples()],
         "",
         "## Role mix",
         *[f"- {c}: {k}" for c, k in cats.items()],

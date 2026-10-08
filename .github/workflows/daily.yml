@@ -3,7 +3,12 @@ name: Daily scrape
 on:
   schedule:
     - cron: "0 2 * * *"      # 07:00 Pakistan time, every day
-  workflow_dispatch: {}       # "Run workflow" button for manual runs
+  workflow_dispatch:           # "Run workflow" button for manual runs
+    inputs:
+      lookback_days:
+        description: "One-time backfill: days to look back (e.g. 14). Leave blank for a normal run."
+        required: false
+        default: ""
 
 permissions:
   contents: write             # lets the job commit data/jobs.csv back to the repo
@@ -30,6 +35,8 @@ jobs:
         env:
           APPS_SCRIPT_URL: ${{ secrets.APPS_SCRIPT_URL }}
           APPS_SCRIPT_SECRET: ${{ secrets.APPS_SCRIPT_SECRET }}
+          PROXIES: ${{ secrets.PROXIES }}
+          LOOKBACK_DAYS: ${{ inputs.lookback_days }}
         run: python -m pipeline.scrape
 
       - name: Commit job history
@@ -37,6 +44,7 @@ jobs:
         run: |
           git config user.name "ai-jobs-bot"
           git config user.email "ai-jobs-bot@users.noreply.github.com"
-          git add data/jobs.csv
+          git add data/
           git diff --cached --quiet || git commit -m "Daily scrape $(date -u +%F)"
+          git pull --rebase origin main || true
           git push
