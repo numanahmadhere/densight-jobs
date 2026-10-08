@@ -1,0 +1,42 @@
+name: Daily scrape
+
+on:
+  schedule:
+    - cron: "0 2 * * *"      # 07:00 Pakistan time, every day
+  workflow_dispatch: {}       # "Run workflow" button for manual runs
+
+permissions:
+  contents: write             # lets the job commit data/jobs.csv back to the repo
+
+concurrency:
+  group: pipeline
+  cancel-in-progress: false
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Scrape and push to Sheets
+        env:
+          APPS_SCRIPT_URL: ${{ secrets.APPS_SCRIPT_URL }}
+          APPS_SCRIPT_SECRET: ${{ secrets.APPS_SCRIPT_SECRET }}
+        run: python -m pipeline.scrape
+
+      - name: Commit job history
+        if: always()
+        run: |
+          git config user.name "ai-jobs-bot"
+          git config user.email "ai-jobs-bot@users.noreply.github.com"
+          git add data/jobs.csv
+          git diff --cached --quiet || git commit -m "Daily scrape $(date -u +%F)"
+          git push
