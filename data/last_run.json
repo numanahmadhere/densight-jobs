@@ -1,0 +1,20 @@
+{
+ "run_at": "2026-10-09 01:11",
+ "date": "2026-10-09",
+ "mode": "daily",
+ "raw": 410,
+ "ai_relevant": 66,
+ "new_ids": [
+  "7c68fd8a9810",
+  "2ba228521f1f",
+  "92c733bdbc7e",
+  "9de401f0298a"
+ ],
+ "by_source": {
+  "linkedin": 35,
+  "indeed": 24,
+  "weworkremotely": 6,
+  "lever": 1
+ },
+ "failures": []
+}

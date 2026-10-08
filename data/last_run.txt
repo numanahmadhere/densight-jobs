@@ -1,20 +1,20 @@
-Run at 2026-10-09 00:18 PKT  (backfill 14 days)
-raw=764  ai_relevant=176  new=134  total_history=185
-AI-relevant by source: {'indeed': 98, 'linkedin': 60, 'weworkremotely': 8, 'workable': 8, 'lever': 1, 'greenhouse': 1}
+Run at 2026-10-09 01:11 PKT  (daily)
+raw=410  ai_relevant=66  new=4  total_history=189
+AI-relevant by source: {'linkedin': 35, 'indeed': 24, 'weworkremotely': 6, 'lever': 1}
 
-indeed | "machine learning" OR "deep learning" OR "artificial intelligence" OR  | 78
-indeed | "data scientist" OR "data science" | 27
-indeed | "generative AI" OR LLM OR "large language model" OR RAG OR "prompt eng | 100
-indeed | "computer vision" OR NLP OR "natural language processing" | 14
-indeed | "data engineer" OR "data analyst" OR "business intelligence" OR "power | 80
-indeed | (developer OR engineer) (LLM OR "machine learning" OR "generative AI"  | 67
+indeed | "machine learning" OR "deep learning" OR "artificial intelligence" OR  | 20
+indeed | "data scientist" OR "data science" | 7
+indeed | "generative AI" OR LLM OR "large language model" OR RAG OR "prompt eng | 26
+indeed | "computer vision" OR NLP OR "natural language processing" | 3
+indeed | "data engineer" OR "data analyst" OR "business intelligence" OR "power | 19
+indeed | (developer OR engineer) (LLM OR "machine learning" OR "generative AI"  | 16
 linkedin | machine learning | 25
 linkedin | artificial intelligence | 25
 linkedin | data scientist | 25
 linkedin | AI engineer | 25
 linkedin | generative AI | 25
 linkedin | LLM | 25
-linkedin | computer vision | 25
+linkedin | computer vision | 24
 linkedin | NLP | 25
 linkedin | data engineer | 25
 linkedin | data analyst | 25
