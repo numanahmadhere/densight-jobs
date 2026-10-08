@@ -1,0 +1,5 @@
+python-jobspy>=1.3.0
+pandas>=2.2
+matplotlib>=3.8
+pyyaml>=6.0
+requests>=2.31
