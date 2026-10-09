@@ -1,19 +1,25 @@
 {
- "run_at": "2026-10-09 01:11",
+ "run_at": "2026-10-09 13:10",
  "date": "2026-10-09",
  "mode": "daily",
- "raw": 410,
- "ai_relevant": 66,
+ "raw": 403,
+ "ai_relevant": 59,
  "new_ids": [
-  "7c68fd8a9810",
-  "2ba228521f1f",
-  "92c733bdbc7e",
-  "9de401f0298a"
+  "83f067020f13",
+  "26c8fbe7613b",
+  "acb680135348",
+  "29e7d28420e7",
+  "f7d0508ec884",
+  "81d5b0c99331",
+  "1973a313d915",
+  "2302e3dcc3fe",
+  "12cc583a9e93"
  ],
  "by_source": {
-  "linkedin": 35,
-  "indeed": 24,
+  "linkedin": 31,
+  "indeed": 20,
   "weworkremotely": 6,
+  "greenhouse": 1,
   "lever": 1
  },
  "failures": []
