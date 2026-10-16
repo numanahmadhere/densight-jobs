@@ -1,23 +1,23 @@
-Run at 2026-10-15 11:40 PKT  (daily)
-raw=361  ai_relevant=53  new=28  total_history=334
-AI-relevant by source: {'linkedin': 30, 'indeed': 19, 'weworkremotely': 3, 'workable': 1}
+Run at 2026-10-16 11:33 PKT  (daily)
+raw=328  ai_relevant=66  new=40  total_history=374
+AI-relevant by source: {'linkedin': 36, 'indeed': 23, 'weworkremotely': 5, 'workable': 2}
 
-indeed | "machine learning" OR "deep learning" OR "artificial intelligence" OR  | 23
-indeed | "data scientist" OR "data science" | 5
-indeed | "generative AI" OR LLM OR "large language model" OR RAG OR "prompt eng | 22
-indeed | "computer vision" OR NLP OR "natural language processing" | 3
-indeed | "data engineer" OR "data analyst" OR "business intelligence" OR "power | 22
-indeed | (developer OR engineer) (LLM OR "machine learning" OR "generative AI"  | 16
-linkedin | machine learning | 25
-linkedin | artificial intelligence | 10
+indeed | "machine learning" OR "deep learning" OR "artificial intelligence" OR  | 34
+indeed | "data scientist" OR "data science" | 8
+indeed | "generative AI" OR LLM OR "large language model" OR RAG OR "prompt eng | 28
+indeed | "computer vision" OR NLP OR "natural language processing" | 2
+indeed | "data engineer" OR "data analyst" OR "business intelligence" OR "power | 15
+indeed | (developer OR engineer) (LLM OR "machine learning" OR "generative AI"  | 17
+linkedin | machine learning | 0
+linkedin | artificial intelligence | 25
 linkedin | data scientist | 10
 linkedin | AI engineer | 25
-linkedin | generative AI | 20
+linkedin | generative AI | 25
 linkedin | LLM | 25
-linkedin | computer vision | 25
-linkedin | NLP | 25
+linkedin | computer vision | 10
+linkedin | NLP | 20
 linkedin | data engineer | 25
-linkedin | data analyst | 20
+linkedin | data analyst | 0
 greenhouse | Motive | 36
 greenhouse | Careem | 7
 greenhouse | Podium | 3
@@ -28,7 +28,7 @@ greenhouse | Interview Engineering | 0
 greenhouse | apiphani | 0
 lever | Smart Working | 7
 workable | Devsinc | 30
-workable | Jazz | 39
+workable | Jazz | 34
 workable | 9D Technologies | 12
 workable | Skylabs AI | 10
 workable | Inbox Business Technologies | 8
