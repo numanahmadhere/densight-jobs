@@ -1,37 +1,37 @@
-Run at 2026-10-21 11:46 PKT  (daily)
-raw=374  ai_relevant=59  new=31  total_history=472
-AI-relevant by source: {'linkedin': 32, 'indeed': 17, 'workable': 5, 'weworkremotely': 5}
+Run at 2026-10-22 11:48 PKT  (daily)
+raw=401  ai_relevant=64  new=28  total_history=500
+AI-relevant by source: {'linkedin': 32, 'indeed': 21, 'weworkremotely': 6, 'workable': 5}
 
 indeed | "machine learning" OR "deep learning" OR "artificial intelligence" OR  | 15
-indeed | "data scientist" OR "data science" | 8
-indeed | "generative AI" OR LLM OR "large language model" OR RAG OR "prompt eng | 18
-indeed | "computer vision" OR NLP OR "natural language processing" | 8
-indeed | "data engineer" OR "data analyst" OR "business intelligence" OR "power | 13
-indeed | (developer OR engineer) (LLM OR "machine learning" OR "generative AI"  | 7
+indeed | "data scientist" OR "data science" | 9
+indeed | "generative AI" OR LLM OR "large language model" OR RAG OR "prompt eng | 28
+indeed | "computer vision" OR NLP OR "natural language processing" | 3
+indeed | "data engineer" OR "data analyst" OR "business intelligence" OR "power | 15
+indeed | (developer OR engineer) (LLM OR "machine learning" OR "generative AI"  | 13
 linkedin | machine learning | 25
 linkedin | artificial intelligence | 25
 linkedin | data scientist | 25
 linkedin | AI engineer | 25
 linkedin | generative AI | 25
 linkedin | LLM | 25
-linkedin | computer vision | 14
+linkedin | computer vision | 21
 linkedin | NLP | 25
 linkedin | data engineer | 25
 linkedin | data analyst | 25
-greenhouse | Motive | 34
+greenhouse | Motive | 33
 greenhouse | Careem | 5
 greenhouse | Podium | 5
 greenhouse | Joblogic | 8
-greenhouse | Nysonian | 6
+greenhouse | Nysonian | 7
 greenhouse | Vectara | 0
 greenhouse | Interview Engineering | 0
 greenhouse | apiphani | 0
 lever | Smart Working | 7
 workable | Devsinc | 29
-workable | Jazz | 39
+workable | Jazz | 40
 workable | 9D Technologies | 10
 workable | Skylabs AI | 10
 workable | Inbox Business Technologies | 8
 workable | Volga Partners | 21
 remoteok | open to Pakistan | 1
-weworkremotely | open to Pakistan | 84
+weworkremotely | open to Pakistan | 85
