@@ -1,22 +1,22 @@
-Run at 2026-10-25 12:07 PKT  (daily)
-raw=321  ai_relevant=32  new=10  total_history=553
-AI-relevant by source: {'linkedin': 18, 'indeed': 9, 'weworkremotely': 3, 'workable': 2}
+Run at 2026-10-26 12:13 PKT  (daily)
+raw=268  ai_relevant=24  new=10  total_history=563
+AI-relevant by source: {'linkedin': 17, 'indeed': 4, 'weworkremotely': 3}
 
-indeed | "machine learning" OR "deep learning" OR "artificial intelligence" OR  | 9
-indeed | "data scientist" OR "data science" | 3
-indeed | "generative AI" OR LLM OR "large language model" OR RAG OR "prompt eng | 15
+indeed | "machine learning" OR "deep learning" OR "artificial intelligence" OR  | 3
+indeed | "data scientist" OR "data science" | 1
+indeed | "generative AI" OR LLM OR "large language model" OR RAG OR "prompt eng | 3
 indeed | "computer vision" OR NLP OR "natural language processing" | 0
-indeed | "data engineer" OR "data analyst" OR "business intelligence" OR "power | 4
-indeed | (developer OR engineer) (LLM OR "machine learning" OR "generative AI"  | 5
-linkedin | machine learning | 25
+indeed | "data engineer" OR "data analyst" OR "business intelligence" OR "power | 2
+indeed | (developer OR engineer) (LLM OR "machine learning" OR "generative AI"  | 2
+linkedin | machine learning | 23
 linkedin | artificial intelligence | 25
-linkedin | data scientist | 25
-linkedin | AI engineer | 25
-linkedin | generative AI | 10
+linkedin | data scientist | 17
+linkedin | AI engineer | 15
+linkedin | generative AI | 25
 linkedin | LLM | 25
-linkedin | computer vision | 13
+linkedin | computer vision | 4
 linkedin | NLP | 25
-linkedin | data engineer | 25
+linkedin | data engineer | 18
 linkedin | data analyst | 25
 greenhouse | Motive | 39
 greenhouse | Careem | 6
@@ -27,11 +27,11 @@ greenhouse | Vectara | 1
 greenhouse | Interview Engineering | 0
 greenhouse | apiphani | 0
 lever | Smart Working | 6
-workable | Devsinc | 32
-workable | Jazz | 28
+workable | Devsinc | 35
+workable | Jazz | 25
 workable | 9D Technologies | 10
 workable | Skylabs AI | 10
 workable | Inbox Business Technologies | 8
 workable | Volga Partners | 21
 remoteok | open to Pakistan | 1
-weworkremotely | open to Pakistan | 90
+weworkremotely | open to Pakistan | 91
