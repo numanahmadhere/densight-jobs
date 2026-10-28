@@ -1,23 +1,23 @@
-Run at 2026-10-27 11:58 PKT  (daily)
-raw=230  ai_relevant=34  new=22  total_history=585
-AI-relevant by source: {'linkedin': 18, 'indeed': 10, 'workable': 4, 'weworkremotely': 2}
+Run at 2026-10-28 12:40 PKT  (daily)
+raw=374  ai_relevant=53  new=28  total_history=613
+AI-relevant by source: {'linkedin': 25, 'indeed': 20, 'workable': 5, 'weworkremotely': 3}
 
-indeed | "machine learning" OR "deep learning" OR "artificial intelligence" OR  | 7
-indeed | "data scientist" OR "data science" | 5
-indeed | "generative AI" OR LLM OR "large language model" OR RAG OR "prompt eng | 9
-indeed | "computer vision" OR NLP OR "natural language processing" | 0
-indeed | "data engineer" OR "data analyst" OR "business intelligence" OR "power | 11
-indeed | (developer OR engineer) (LLM OR "machine learning" OR "generative AI"  | 4
+indeed | "machine learning" OR "deep learning" OR "artificial intelligence" OR  | 18
+indeed | "data scientist" OR "data science" | 12
+indeed | "generative AI" OR LLM OR "large language model" OR RAG OR "prompt eng | 20
+indeed | "computer vision" OR NLP OR "natural language processing" | 1
+indeed | "data engineer" OR "data analyst" OR "business intelligence" OR "power | 24
+indeed | (developer OR engineer) (LLM OR "machine learning" OR "generative AI"  | 13
 linkedin | machine learning | 25
-linkedin | artificial intelligence | 20
-linkedin | data scientist | 0
+linkedin | artificial intelligence | 25
+linkedin | data scientist | 25
 linkedin | AI engineer | 25
 linkedin | generative AI | 25
-linkedin | LLM | 10
-linkedin | computer vision | 0
-linkedin | NLP | 10
-linkedin | data engineer | 0
-linkedin | data analyst | 20
+linkedin | LLM | 25
+linkedin | computer vision | 25
+linkedin | NLP | 25
+linkedin | data engineer | 25
+linkedin | data analyst | 0
 greenhouse | Motive | 40
 greenhouse | Careem | 6
 greenhouse | Podium | 5
@@ -26,9 +26,9 @@ greenhouse | Nysonian | 7
 greenhouse | Vectara | 2
 greenhouse | Interview Engineering | 0
 greenhouse | apiphani | 0
-lever | Smart Working | 6
-workable | Devsinc | 33
-workable | Jazz | 25
+lever | Smart Working | 4
+workable | Devsinc | 36
+workable | Jazz | 24
 workable | 9D Technologies | 9
 workable | Skylabs AI | 10
 workable | Inbox Business Technologies | 8
