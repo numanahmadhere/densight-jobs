@@ -1,23 +1,23 @@
-Run at 2026-10-31 12:41 PKT  (daily)
-raw=324  ai_relevant=47  new=19  total_history=683
-AI-relevant by source: {'linkedin': 22, 'indeed': 13, 'weworkremotely': 8, 'workable': 3, 'greenhouse': 1}
+Run at 2026-11-01 13:20 PKT  (daily)
+raw=274  ai_relevant=39  new=14  total_history=697
+AI-relevant by source: {'linkedin': 16, 'indeed': 13, 'weworkremotely': 8, 'workable': 1, 'greenhouse': 1}
 
-indeed | "machine learning" OR "deep learning" OR "artificial intelligence" OR  | 15
-indeed | "data scientist" OR "data science" | 4
-indeed | "generative AI" OR LLM OR "large language model" OR RAG OR "prompt eng | 18
+indeed | "machine learning" OR "deep learning" OR "artificial intelligence" OR  | 5
+indeed | "data scientist" OR "data science" | 1
+indeed | "generative AI" OR LLM OR "large language model" OR RAG OR "prompt eng | 16
 indeed | "computer vision" OR NLP OR "natural language processing" | 1
-indeed | "data engineer" OR "data analyst" OR "business intelligence" OR "power | 13
-indeed | (developer OR engineer) (LLM OR "machine learning" OR "generative AI"  | 5
-linkedin | machine learning | 25
-linkedin | artificial intelligence | 10
-linkedin | data scientist | 25
-linkedin | AI engineer | 25
-linkedin | generative AI | 25
+indeed | "data engineer" OR "data analyst" OR "business intelligence" OR "power | 9
+indeed | (developer OR engineer) (LLM OR "machine learning" OR "generative AI"  | 4
+linkedin | machine learning | 18
+linkedin | artificial intelligence | 25
+linkedin | data scientist | 10
+linkedin | AI engineer | 17
+linkedin | generative AI | 10
 linkedin | LLM | 25
-linkedin | computer vision | 16
-linkedin | NLP | 10
-linkedin | data engineer | 10
-linkedin | data analyst | 25
+linkedin | computer vision | 4
+linkedin | NLP | 25
+linkedin | data engineer | 20
+linkedin | data analyst | 20
 greenhouse | Motive | 41
 greenhouse | Careem | 5
 greenhouse | Podium | 5
@@ -34,4 +34,4 @@ workable | Skylabs AI | 10
 workable | Inbox Business Technologies | 9
 workable | Volga Partners | 21
 remoteok | open to Pakistan | 1
-weworkremotely | open to Pakistan | 93
+weworkremotely | open to Pakistan | 92
