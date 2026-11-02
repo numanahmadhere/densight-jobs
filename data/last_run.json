@@ -1,31 +1,30 @@
 {
- "run_at": "2026-11-01 13:20",
- "date": "2026-11-01",
+ "run_at": "2026-11-02 13:32",
+ "date": "2026-11-02",
  "mode": "daily",
- "raw": 274,
- "ai_relevant": 39,
+ "raw": 227,
+ "ai_relevant": 25,
  "new_ids": [
-  "31a14f2104bf",
-  "03283644bdd9",
-  "05c8631053ea",
-  "77e12827a4a5",
-  "10744e0bb318",
-  "1470d90b7f65",
-  "4f1d0b1e2395",
-  "1e0487c85e89",
-  "221d50fe326e",
-  "69f12bc0adf2",
-  "bb322ecbdda8",
-  "4b54c34bed07",
-  "5f5aa413ac77",
-  "9a8eb69f4450"
+  "bde18a9c72e9",
+  "fb3f39997574",
+  "d974ee125738",
+  "68c9d657d2b3",
+  "0cd96dc60013",
+  "9a23f0f24af7",
+  "016034dd46fd",
+  "e454a1f3f226",
+  "40bda1c75f07",
+  "4ab09cb7fb83",
+  "ceeb8a1d1bc3",
+  "d670ee69dcd4",
+  "d1467cf6d860"
  ],
  "by_source": {
-  "linkedin": 16,
-  "indeed": 13,
-  "weworkremotely": 8,
-  "workable": 1,
-  "greenhouse": 1
+  "indeed": 9,
+  "linkedin": 9,
+  "weworkremotely": 5,
+  "greenhouse": 1,
+  "workable": 1
  },
  "failures": []
 }
