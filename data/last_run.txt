@@ -1,37 +1,37 @@
-Run at 2026-11-06 13:43 PKT  (daily)
-raw=381  ai_relevant=52  new=29  total_history=802
-AI-relevant by source: {'linkedin': 25, 'indeed': 22, 'weworkremotely': 4, 'workable': 1}
+Run at 2026-11-07 12:58 PKT  (daily)
+raw=367  ai_relevant=61  new=26  total_history=828
+AI-relevant by source: {'linkedin': 37, 'indeed': 19, 'remoteok': 2, 'weworkremotely': 2, 'workable': 1}
 
-indeed | "machine learning" OR "deep learning" OR "artificial intelligence" OR  | 25
-indeed | "data scientist" OR "data science" | 5
-indeed | "generative AI" OR LLM OR "large language model" OR RAG OR "prompt eng | 29
-indeed | "computer vision" OR NLP OR "natural language processing" | 5
-indeed | "data engineer" OR "data analyst" OR "business intelligence" OR "power | 16
-indeed | (developer OR engineer) (LLM OR "machine learning" OR "generative AI"  | 15
+indeed | "machine learning" OR "deep learning" OR "artificial intelligence" OR  | 18
+indeed | "data scientist" OR "data science" | 7
+indeed | "generative AI" OR LLM OR "large language model" OR RAG OR "prompt eng | 23
+indeed | "computer vision" OR NLP OR "natural language processing" | 2
+indeed | "data engineer" OR "data analyst" OR "business intelligence" OR "power | 13
+indeed | (developer OR engineer) (LLM OR "machine learning" OR "generative AI"  | 12
 linkedin | machine learning | 25
 linkedin | artificial intelligence | 25
 linkedin | data scientist | 25
 linkedin | AI engineer | 25
 linkedin | generative AI | 25
 linkedin | LLM | 25
-linkedin | computer vision | 19
+linkedin | computer vision | 25
 linkedin | NLP | 25
 linkedin | data engineer | 25
 linkedin | data analyst | 25
-greenhouse | Motive | 46
+greenhouse | Motive | 49
 greenhouse | Careem | 6
 greenhouse | Podium | 6
-greenhouse | Joblogic | 6
+greenhouse | Joblogic | 0
 greenhouse | Nysonian | 6
 greenhouse | Vectara | 1
 greenhouse | Interview Engineering | 0
 greenhouse | apiphani | 0
-lever | Smart Working | 1
-workable | Devsinc | 36
-workable | Jazz | 26
+lever | Smart Working | 2
+workable | Devsinc | 37
+workable | Jazz | 28
 workable | 9D Technologies | 14
 workable | Skylabs AI | 10
 workable | Inbox Business Technologies | 10
 workable | Volga Partners | 20
-remoteok | open to Pakistan | 2
+remoteok | open to Pakistan | 3
 weworkremotely | open to Pakistan | 72
