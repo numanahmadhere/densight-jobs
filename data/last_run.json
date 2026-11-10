@@ -1,18 +1,30 @@
 {
- "run_at": "2026-11-09 13:49",
- "date": "2026-11-09",
+ "run_at": "2026-11-10 13:58",
+ "date": "2026-11-10",
  "mode": "daily",
- "raw": 174,
- "ai_relevant": 13,
+ "raw": 255,
+ "ai_relevant": 18,
  "new_ids": [
-  "61e16f12561a",
-  "3f2b06f9cd5f",
-  "0d63db564ec5",
-  "b2e517a87f39"
+  "b7eff6c4f01b",
+  "8427a6dd23ed",
+  "7f3b44c0e99e",
+  "f0ed4d5353f8",
+  "cd2bbda8d6fb",
+  "b65eb4229821",
+  "085bda4b79f1",
+  "0ed393ee959a",
+  "2dc9a863aa22",
+  "6e4ebed78b9e",
+  "e9dbd21deeb5",
+  "62f6d66229b1",
+  "7453bdd81449",
+  "068406b17448",
+  "abd2fdd0cf6d",
+  "c724ff58d3cd"
  ],
  "by_source": {
   "linkedin": 11,
-  "indeed": 2
+  "indeed": 7
  },
  "failures": []
 }
