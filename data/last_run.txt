@@ -1,20 +1,20 @@
-Run at 2026-11-14 13:16 PKT  (daily)
-raw=371  ai_relevant=50  new=24  total_history=958
-AI-relevant by source: {'indeed': 24, 'linkedin': 24, 'workable': 1, 'weworkremotely': 1}
+Run at 2026-11-15 13:35 PKT  (daily)
+raw=294  ai_relevant=29  new=5  total_history=963
+AI-relevant by source: {'linkedin': 17, 'indeed': 11, 'workable': 1}
 
-indeed | "machine learning" OR "deep learning" OR "artificial intelligence" OR  | 24
-indeed | "data scientist" OR "data science" | 5
-indeed | "generative AI" OR LLM OR "large language model" OR RAG OR "prompt eng | 30
-indeed | "computer vision" OR NLP OR "natural language processing" | 5
-indeed | "data engineer" OR "data analyst" OR "business intelligence" OR "power | 18
-indeed | (developer OR engineer) (LLM OR "machine learning" OR "generative AI"  | 12
+indeed | "machine learning" OR "deep learning" OR "artificial intelligence" OR  | 11
+indeed | "data scientist" OR "data science" | 1
+indeed | "generative AI" OR LLM OR "large language model" OR RAG OR "prompt eng | 14
+indeed | "computer vision" OR NLP OR "natural language processing" | 2
+indeed | "data engineer" OR "data analyst" OR "business intelligence" OR "power | 8
+indeed | (developer OR engineer) (LLM OR "machine learning" OR "generative AI"  | 4
 linkedin | machine learning | 25
 linkedin | artificial intelligence | 25
 linkedin | data scientist | 25
 linkedin | AI engineer | 25
 linkedin | generative AI | 25
 linkedin | LLM | 25
-linkedin | computer vision | 16
+linkedin | computer vision | 7
 linkedin | NLP | 25
 linkedin | data engineer | 25
 linkedin | data analyst | 25
