@@ -1,20 +1,19 @@
 {
- "run_at": "2026-11-15 13:35",
- "date": "2026-11-15",
+ "run_at": "2026-11-16 13:46",
+ "date": "2026-11-16",
  "mode": "daily",
- "raw": 294,
- "ai_relevant": 29,
+ "raw": 220,
+ "ai_relevant": 13,
  "new_ids": [
-  "3cdf082fc127",
-  "43ce0da924ce",
-  "a5a30c66ac66",
-  "30b0acf4fb9e",
-  "420681d842d1"
+  "c765048ed943",
+  "ba5ce95b509e",
+  "0d2c59d63ebf",
+  "1df76b964d71",
+  "a7f021a08108"
  ],
  "by_source": {
-  "linkedin": 17,
-  "indeed": 11,
-  "workable": 1
+  "linkedin": 11,
+  "indeed": 2
  },
  "failures": []
 }
