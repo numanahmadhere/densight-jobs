@@ -1,24 +1,24 @@
-Run at 2026-11-18 14:25 PKT  (daily)
-raw=372  ai_relevant=48  new=22  total_history=1008
-AI-relevant by source: {'linkedin': 32, 'indeed': 14, 'workable': 1, 'weworkremotely': 1}
+Run at 2026-11-19 14:39 PKT  (daily)
+raw=409  ai_relevant=43  new=21  total_history=1029
+AI-relevant by source: {'linkedin': 19, 'indeed': 17, 'weworkremotely': 6, 'workable': 1}
 
 indeed | "machine learning" OR "deep learning" OR "artificial intelligence" OR  | 20
 indeed | "data scientist" OR "data science" | 7
-indeed | "generative AI" OR LLM OR "large language model" OR RAG OR "prompt eng | 24
-indeed | "computer vision" OR NLP OR "natural language processing" | 0
-indeed | "data engineer" OR "data analyst" OR "business intelligence" OR "power | 20
-indeed | (developer OR engineer) (LLM OR "machine learning" OR "generative AI"  | 11
+indeed | "generative AI" OR LLM OR "large language model" OR RAG OR "prompt eng | 26
+indeed | "computer vision" OR NLP OR "natural language processing" | 3
+indeed | "data engineer" OR "data analyst" OR "business intelligence" OR "power | 17
+indeed | (developer OR engineer) (LLM OR "machine learning" OR "generative AI"  | 13
 linkedin | machine learning | 25
 linkedin | artificial intelligence | 25
 linkedin | data scientist | 25
 linkedin | AI engineer | 25
 linkedin | generative AI | 25
 linkedin | LLM | 25
-linkedin | computer vision | 25
+linkedin | computer vision | 10
 linkedin | NLP | 25
 linkedin | data engineer | 25
 linkedin | data analyst | 25
-greenhouse | Motive | 47
+greenhouse | Motive | 48
 greenhouse | Careem | 5
 greenhouse | Podium | 5
 greenhouse | Joblogic | 1
@@ -26,12 +26,12 @@ greenhouse | Nysonian | 7
 greenhouse | Vectara | 1
 greenhouse | Interview Engineering | 0
 greenhouse | apiphani | 0
-lever | Smart Working | 6
+lever | Smart Working | 5
 workable | Devsinc | 38
-workable | Jazz | 25
+workable | Jazz | 30
 workable | 9D Technologies | 8
 workable | Skylabs AI | 10
 workable | Inbox Business Technologies | 10
 workable | Volga Partners | 6
 remoteok | open to Pakistan | 3
-weworkremotely | open to Pakistan | 50
+weworkremotely | open to Pakistan | 75
